@@ -8,7 +8,7 @@
 ![cat](https://media1.giphy.com/media/pOKrXLf9N5g76/giphy.gif "Working hard")
 ___
 ## Документация:
-- [Технический документ](https://docs.google.com/document/d/1iYDcH8vW5qt8NE1q17Douner1vuNkDjMZhA0qZy7FNI/edit?usp=sharing)
+- [Технический документ](https://docs.google.com/document/d/1MM1TELtBkKtAjE9yQ4lVKp5GpSJtRmn7/edit?usp=sharing&ouid=107060867593907016827&rtpof=true&sd=true)
 - [Блок-схема](https://docs.google.com/document/d/1PtKv3g_xTQMqNf5aMuMcDJKIB9AcucXf/edit?usp=sharing&ouid=108039641319216515313&rtpof=true&sd=true)
 - [Документация GUI](https://docs.google.com/document/d/1iYDcH8vW5qt8NE1q17Douner1vuNkDjMZhA0qZy7FNI/edit?usp=sharing)
 ___
