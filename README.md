@@ -1,4 +1,3 @@
-# ML-lab1
 # Обнаружение объектов с помощью RetinaNet
 ## Группа:
 - Егоров Айтал as **[aitalyy](https://github.com/0dj3/ML-lab1/commits?author=aitalyy)**
