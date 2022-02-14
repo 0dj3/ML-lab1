@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+/venv
+/retinanet
+/data
+/data.zip
+.idea/

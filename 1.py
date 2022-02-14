@@ -1,5 +1,4 @@
 import os
-import re
 import zipfile
 
 import numpy as np
@@ -724,7 +723,7 @@ epochs = 1
 # Running 100 training and 50 validation steps,
 # remove `.take` when training on the full dataset
 
-# model.fit(
+#model.fit(
 #     train_dataset.take(100),
 #     validation_data=val_dataset.take(50),
 #     epochs=epochs,
