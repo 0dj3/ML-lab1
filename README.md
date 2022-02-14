@@ -8,6 +8,7 @@
 ___
 ## Документация:
 - [Технический документ](https://docs.google.com/document/d/1iYDcH8vW5qt8NE1q17Douner1vuNkDjMZhA0qZy7FNI/edit?usp=sharing)
+- [Блок-схема](https://docs.google.com/document/d/1PtKv3g_xTQMqNf5aMuMcDJKIB9AcucXf/edit?usp=sharing&ouid=108039641319216515313&rtpof=true&sd=true)
 - [Документация GUI](https://docs.google.com/document/d/1iYDcH8vW5qt8NE1q17Douner1vuNkDjMZhA0qZy7FNI/edit?usp=sharing)
 ___
 ## О программе:
