@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
 
     # Функция, которая получает название файла (Формат png, jpg и bmp)
     def openFile(self):
-        fileName = QFileDialog.getOpenFileNames(filter="Image Files (*.png *.jpg *.bmp)")[0][0]
+        fileName = QFileDialog.getOpenFileName(filter="Image Files (*.png *.jpg *.bmp)")[0]
         if len(fileName)>0:
             self.openImage(fileName)
         else:
