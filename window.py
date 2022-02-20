@@ -107,11 +107,12 @@ class Ui_MainWindow(object):
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
 
-        # закрытие
+        # Закрывает окно
         self.actionQuit.triggered.connect(QCoreApplication.instance().quit)
-        # открытие файла
+        # Открывает изображение и отображает на экране
         self.actionOpen.triggered.connect(self.openFile)
 
+    # Функция открывающая файл и отображающая её на экране
     def openImage(self, image):
         pixmapImage = QPixmap(image)
         pixmapImage = pixmapImage.scaled(
@@ -121,10 +122,14 @@ class Ui_MainWindow(object):
         )
         self.labelImage.setPixmap(pixmapImage)
 
+    # Функция, которая получает название файла (Формат png, jpg и bmp)
     def openFile(self):
         fileName = QFileDialog.getOpenFileNames(filter="Image Files (*.png *.jpg *.bmp)")[0][0]
-        self.image = fileName
-        self.openImage(self.image)
+        if len(fileName)>0:
+            self.openImage(fileName)
+        else:
+            print("eee na, ti 4e delaesh na?")
+
 
 
 if __name__ == "__main__":
