@@ -24,14 +24,20 @@ class Ui_MainWindow(object):
         self.pushButton.setCheckable(False)
         self.pushButton.setObjectName("pushButton")
 
-        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(60, 10, 121, 41))
-        self.textEdit.setFrameShape(QtWidgets.QFrame.Box)
-        self.textEdit.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.textEdit.setLineWidth(1)
-        self.textEdit.setMidLineWidth(0)
-        self.textEdit.setAutoFormatting(QtWidgets.QTextEdit.AutoNone)
-        self.textEdit.setObjectName("textEdit")
+        self.line = QtWidgets.QLineEdit(self.centralwidget)
+        self.line.setGeometry(QtCore.QRect(60,10,121,41))
+        self.line.setText("00:00:00")
+        self.line.setInputMask("99:99:99")
+        self.line.setObjectName("line")
+
+        # self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        # self.textEdit.setGeometry(QtCore.QRect(60, 10, 121, 41))
+        # self.textEdit.setFrameShape(QtWidgets.QFrame.Box)
+        # self.textEdit.setFrameShadow(QtWidgets.QFrame.Plain)
+        # self.textEdit.setLineWidth(1)
+        # self.textEdit.setMidLineWidth(0)
+        # self.textEdit.setAutoFormatting(QtWidgets.QTextEdit.AutoNone)
+        # self.textEdit.setObjectName("textEdit")
 
         self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
         self.horizontalSlider.setGeometry(QtCore.QRect(190, 20, 601, 21))
@@ -84,16 +90,14 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.actionQuit.triggered.connect(QCoreApplication.instance().quit)
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">00:00:00</span></p></body></html>"))
+#         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+# "p, li { white-space: pre-wrap; }\n"
+# "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+# "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">00:00:00</span></p></body></html>"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
@@ -101,6 +105,9 @@ class Ui_MainWindow(object):
         self.actionSave_frame.setText(_translate("MainWindow", "Save frame"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
+
+        # закрытие
+        self.actionQuit.triggered.connect(QCoreApplication.instance().quit)
 
 
 
