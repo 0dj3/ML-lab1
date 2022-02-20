@@ -15,6 +15,6 @@ ___
 Данная программа является лабораторной работой по дисциплине "Машинное обучение"...
 ___
 ## Полезные ссылки:
-- В процессе разработки
+- [Дизайн в Figma](https://www.figma.com/file/WsS4cGck8kmb84OwkmJIbN/%D0%9C%D0%9E-%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1?node-id=0%3A1)
 
 ![Vanishing](https://media1.tenor.com/images/9e9fdd1ebe593f3adf24b829a0f5a989/tenor.gif?itemid=3377649)
