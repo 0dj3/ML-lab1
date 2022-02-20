@@ -1,8 +1,14 @@
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication, pyqtSignal, QDir
+from PyQt5.QtGui import QPixmap, QIcon
+from PyQt5.Qt import *
+from PyQt5.QtWidgets import QLabel, QVBoxLayout, QFileDialog
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        super().__init__()
 
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(806, 597)
@@ -30,23 +36,23 @@ class Ui_MainWindow(object):
         self.line.setInputMask("99:99:99")
         self.line.setObjectName("line")
 
-        # self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        # self.textEdit.setGeometry(QtCore.QRect(60, 10, 121, 41))
-        # self.textEdit.setFrameShape(QtWidgets.QFrame.Box)
-        # self.textEdit.setFrameShadow(QtWidgets.QFrame.Plain)
-        # self.textEdit.setLineWidth(1)
-        # self.textEdit.setMidLineWidth(0)
-        # self.textEdit.setAutoFormatting(QtWidgets.QTextEdit.AutoNone)
-        # self.textEdit.setObjectName("textEdit")
-
         self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
         self.horizontalSlider.setGeometry(QtCore.QRect(190, 20, 601, 21))
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName("horizontalSlider")
 
-        self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
-        self.graphicsView.setGeometry(QtCore.QRect(10, 60, 781, 491))
-        self.graphicsView.setObjectName("graphicsView")
+        # self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
+        # self.graphicsView.setGeometry(QtCore.QRect(10, 60, 781, 491))
+        # self.graphicsView.setObjectName("graphicsView")
+        # MainWindow.setCentralWidget(self.centralwidget)
+
+        self.labelImage = QLabel(self.centralwidget)
+        self.labelImage.setGeometry(QtCore.QRect(10, 60, 781, 491))
+        self.labelImage.setStyleSheet(
+            "QLabel {background-color: write; border: 1px solid "
+            "#0DFFD7; border-radius: 5px;}")
+        self.labelImage.setObjectName("graphicsView")
+        self.labelImage.setAlignment(Qt.AlignCenter)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -93,11 +99,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-#         self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-# "p, li { white-space: pre-wrap; }\n"
-# "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-# "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">00:00:00</span></p></body></html>"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
@@ -108,12 +109,25 @@ class Ui_MainWindow(object):
 
         # закрытие
         self.actionQuit.triggered.connect(QCoreApplication.instance().quit)
+        # открытие файла
+        self.actionOpen.triggered.connect(self.openFile)
 
+    def openImage(self, image):
+        pixmapImage = QPixmap(image)
+        pixmapImage = pixmapImage.scaled(
+            self.labelImage.width(), self.labelImage.height(),
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        )
+        self.labelImage.setPixmap(pixmapImage)
 
+    def openFile(self):
+        fileName = QFileDialog.getOpenFileNames(filter="Image Files (*.png *.jpg *.bmp)")[0][0]
+        self.image = fileName
+        self.openImage(self.image)
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
