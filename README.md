@@ -16,5 +16,6 @@ ___
 ___
 ## Полезные ссылки:
 - [Дизайн в Figma](https://www.figma.com/file/WsS4cGck8kmb84OwkmJIbN/%D0%9C%D0%9E-%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1?node-id=0%3A1)
+- [Документация PyQt](https://doc.qt.io/)
 
 ![flamed_monkey](https://i.giphy.com/media/3o85xDWOG8Sbl9yQzm/giphy.webp)
