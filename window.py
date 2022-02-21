@@ -1,8 +1,12 @@
 import sys
+import cv2
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.Qt import *
 from PyQt5.QtWidgets import QLabel, QFileDialog
-# from main import *
+from PyQt5.QtGui import QImage, QPixmap, QPainter, QPen, QGuiApplication
+from PIL import Image
+from main import *
+from PIL.ImageQt import ImageQt
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -135,21 +139,51 @@ class Ui_MainWindow(object):
         self.actionSave_frame.triggered.connect(self.saveFrame)
         self.pushButton.clicked.connect(self.saveFrame)
 
+    def tensor_to_image(self, tensor):
+        tensor = tensor*255
+        tensor = np.array(tensor, dtype=np.uint8)
+        if np.ndim(tensor)>3:
+            assert tensor.shape[0] == 1
+            tensor = tensor[0]
+        return Image.fromarray(tensor)
+
+    def paintEvent(self, event):
+        super().paintEvent(event)
+        qp = QPainter(self)
+        br = QBrush(QColor(100, 10, 10, 40))
+        qp.setBrush(br)
+        qp.drawRect(QRect(self.begin, self.end))
+
     # Функция открывающая файл и отображающая её на экране
     def openImage(self, image):
 
-        # image1 = mainClass.predictImg('res/anton.jpg')
-        # image1 = np.array(image1, dtype=np.uint8)
-        # plt.imshow(image1)
-        # plt.show()
+        boxes, classes, scores = mainClass.predictImg(image)        
         
         pixmapImage = QPixmap(image)
-        pixmapImage = pixmapImage.scaled(
-            self.labelImage.width(), self.labelImage.height(),
-            Qt.KeepAspectRatio,
-            Qt.SmoothTransformation
-        )
+        # pixmapImage = pixmapImage.scaled(
+        #     self.labelImage.width(), self.labelImage.height(),
+        #     Qt.KeepAspectRatio,
+        #     Qt.SmoothTransformation
+        # )
+        painter = QPainter(pixmapImage)
+        
+        for box, _cls, score in zip(boxes, classes, scores):
+            painter.setPen(QPen(Qt.red,2,Qt.SolidLine))
+            text = "{}: {:.2f}".format(_cls, score)
+            x1, y1, x2, y2 = box
+            w, h = x2 - x1, y2 - y1
+            rect = QRect(int(x1), int(y1), int(w), int(h))
+            painter.drawRect(rect)
+            
+            painter.setPen(QPen(Qt.blue,2,Qt.SolidLine))
+            pos = QPoint(int(x1), int(y1))
+            painter.setFont(QFont("Arial", 12, QFont.Bold))
+            painter.drawText(pos, text)
+
+        painter.end()
+
         self.labelImage.setPixmap(pixmapImage)
+        
 
     # Функция, которая получает название файла (Формат png, jpg и bmp)
     # ToDo 1) - Исправить баг, который крашит программу при нажатии на кнопку "Отмена"
