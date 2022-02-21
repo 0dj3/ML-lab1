@@ -752,19 +752,36 @@ val_dataset = tfds.load("coco/2017", split="validation", data_dir="data")
 int2str = dataset_info.features["objects"]["label"].int2str
 
 
+# for sample in val_dataset.take(3):
+#     image = tf.cast(sample["image"], dtype=tf.float32)
+#     input_image, ratio = prepare_image(image)
+#     detections = inference_model.predict(input_image)
+#     num_detections = detections.valid_detections[0]
+#     class_names = [
+#         int2str(int(x)) for x in detections.nmsed_classes[0][:num_detections]
+#     ]
+#     visualize_detections(
+#         image,
+#         detections.nmsed_boxes[0][:num_detections] / ratio,
+#         class_names,
+#         detections.nmsed_scores[0][:num_detections],
+#     )
 
 
-for sample in val_dataset.take(3):
-    image = tf.cast(sample["image"], dtype=tf.float32)
-    input_image, ratio = prepare_image(image)
-    detections = inference_model.predict(input_image)
-    num_detections = detections.valid_detections[0]
-    class_names = [
-        int2str(int(x)) for x in detections.nmsed_classes[0][:num_detections]
-    ]
-    visualize_detections(
-        image,
-        detections.nmsed_boxes[0][:num_detections] / ratio,
-        class_names,
-        detections.nmsed_scores[0][:num_detections],
-    )
+# tf.image.decode_jpeg('res/Naruto.jpeg')
+
+img = tf.image.decode_jpeg(tf.io.read_file('res/anton.jpg'), channels=3)
+image = tf.cast(img, tf.float32)
+
+input_image, ratio = prepare_image(image)
+detections = inference_model.predict(input_image)
+num_detections = detections.valid_detections[0]
+class_names = [
+    int2str(int(x)) for x in detections.nmsed_classes[0][:num_detections]
+]
+visualize_detections(
+    image,
+    detections.nmsed_boxes[0][:num_detections] / ratio,
+    class_names,
+    detections.nmsed_scores[0][:num_detections],
+)
