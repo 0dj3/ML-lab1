@@ -23,39 +23,39 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
 
         # Кнопка сохранения кадра
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(10, 10, 41, 41))
-        self.pushButton.setMouseTracking(False)
-        self.pushButton.setAutoFillBackground(False)
-        self.pushButton.setStyleSheet("")
-        self.pushButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("res/SaveFrame.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(24, 24))
-        self.pushButton.setShortcut("")
-        self.pushButton.setCheckable(False)
-        self.pushButton.setObjectName("pushButton")
+        # self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        # self.pushButton.setGeometry(QtCore.QRect(10, 10, 41, 41))
+        # self.pushButton.setMouseTracking(False)
+        # self.pushButton.setAutoFillBackground(False)
+        # self.pushButton.setStyleSheet("")
+        # self.pushButton.setText("")
+        # icon = QtGui.QIcon()
+        # icon.addPixmap(QtGui.QPixmap("res/SaveFrame.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        # self.pushButton.setIcon(icon)
+        # self.pushButton.setIconSize(QtCore.QSize(24, 24))
+        # self.pushButton.setShortcut("")
+        # self.pushButton.setCheckable(False)
+        # self.pushButton.setObjectName("pushButton")
 
         # Текст-бокс для записи времени
         # ToDo 1) - добавить верхнюю границу секунд и минут в 59
         # ToDo 2) - максимальное значени времени по продолжительности видео
-        self.line = QtWidgets.QLineEdit(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(60, 10, 121, 41))
-        self.line.setText("00:00:00")
-        self.line.setInputMask("99:99:99")
-        self.line.setObjectName("line")
+        # self.line = QtWidgets.QLineEdit(self.centralwidget)
+        # self.line.setGeometry(QtCore.QRect(60, 10, 121, 41))
+        # self.line.setText("00:00:00")
+        # self.line.setInputMask("99:99:99")
+        # self.line.setObjectName("line")
 
         # Ползунок для перемотки
         # ToDo 1) - Добавить управление временем
-        self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
-        self.horizontalSlider.setGeometry(QtCore.QRect(190, 20, 601, 21))
-        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
-        self.horizontalSlider.setObjectName("horizontalSlider")
+        # self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
+        # self.horizontalSlider.setGeometry(QtCore.QRect(190, 20, 601, 21))
+        # self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        # self.horizontalSlider.setObjectName("horizontalSlider")
 
         # Поле для вывода картинки
         self.labelImage = QLabel(self.centralwidget)
-        self.labelImage.setGeometry(QtCore.QRect(10, 60, 781, 491))
+        self.labelImage.setGeometry(QtCore.QRect(10, 10, 781, 550))
         self.labelImage.setStyleSheet(
             "QLabel {background-color: white; border: 1px solid "
             "gray;}")
@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
         self.actionClose.triggered.connect(self.closeImage)
         # Сохранение изображения
         self.actionSave_frame.triggered.connect(self.saveFrame)
-        self.pushButton.clicked.connect(self.saveFrame)
+        # self.pushButton.clicked.connect(self.saveFrame)
 
     def tensor_to_image(self, tensor):
         tensor = tensor*255
@@ -196,7 +196,8 @@ class Ui_MainWindow(object):
 
     # Функция вызывающая стоковое изображение "Empty"
     def closeImage(self):
-        self.openImage(self.stockImage)
+        pixmapImage = QPixmap('res/empty.png')
+        self.labelImage.setPixmap(pixmapImage)
 
     # Функция сохранения изображения
     def saveFrame(self):
