@@ -4,7 +4,7 @@
 - Иннокентьев Владимир as **[0dj3](https://github.com/0dj3/ML-lab1/commits?author=0dj3)**
 - Луковцев Алексей as **[Witawe](https://github.com/0dj3/ML-lab1/commits?author=Witawe)**
 
-![cat](https://media1.giphy.com/media/pOKrXLf9N5g76/giphy.gif "Working hard")
+![monkey](https://i.giphy.com/media/5Zesu5VPNGJlm/giphy.webp)
 ___
 ## Документация:
 - [Технический документ](https://docs.google.com/document/d/1MM1TELtBkKtAjE9yQ4lVKp5GpSJtRmn7/edit?usp=sharing&ouid=107060867593907016827&rtpof=true&sd=true)
@@ -16,5 +16,6 @@ ___
 ___
 ## Полезные ссылки:
 - [Дизайн в Figma](https://www.figma.com/file/WsS4cGck8kmb84OwkmJIbN/%D0%9C%D0%9E-%D0%97%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1?node-id=0%3A1)
+- [Документация PyQt](https://doc.qt.io/)
 
-![Vanishing](https://media1.tenor.com/images/9e9fdd1ebe593f3adf24b829a0f5a989/tenor.gif?itemid=3377649)
+![flamed_monkey](https://i.giphy.com/media/3o85xDWOG8Sbl9yQzm/giphy.webp)
