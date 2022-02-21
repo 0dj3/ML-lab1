@@ -59,8 +59,8 @@ class Ui_MainWindow(object):
         self.labelImage.setObjectName("graphicsView")
         self.labelImage.setAlignment(Qt.AlignCenter)
         MainWindow.setCentralWidget(self.centralwidget)
-        image = "res/empty.png"
-        self.openImage(image)
+        self.stockImage = "res/empty.png"
+        self.openImage(self.stockImage)
 
         # Инициализация меню-бара
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -86,7 +86,6 @@ class Ui_MainWindow(object):
         self.actionOpen.setObjectName("actionOpen")
 
         # File -> Close
-        # ToDo 1) - Очистить лейб и вызвать открытие простого файла
         self.actionClose = QtWidgets.QAction(MainWindow)
         self.actionClose.setObjectName("actionClose")
 
@@ -132,6 +131,8 @@ class Ui_MainWindow(object):
         self.actionQuit.triggered.connect(QCoreApplication.instance().quit)
         # Открывает изображение и отображает на экране
         self.actionOpen.triggered.connect(self.openFile)
+        # Очистка поля с изображением
+        self.actionClose.triggered.connect(self.closeImage)
 
     # Функция открывающая файл и отображающая её на экране
     def openImage(self, image):
@@ -151,6 +152,15 @@ class Ui_MainWindow(object):
             self.openImage(fileName)
         else:
             print("eee na, ti 4e delaesh na?")
+
+    # Функция вызывающая стоковое изображение "Empty"
+    def closeImage(self):
+        self.openImage(self.stockImage)
+
+    # Функция сохранения изображения
+    def saveFrame(self):
+        # ToDo Потом доделаю
+        pass
 
 
 
