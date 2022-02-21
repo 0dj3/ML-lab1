@@ -788,3 +788,5 @@ class mainClass():
         #     class_names,
         #     detections.nmsed_scores[0][:num_detections],
         # )
+
+mainClass.predictImg('res/anton.jpg')
