@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.Qt import *
 from PyQt5.QtWidgets import QLabel, QFileDialog
-from main import *
+# from main import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -138,12 +138,12 @@ class Ui_MainWindow(object):
     # Функция открывающая файл и отображающая её на экране
     def openImage(self, image):
 
-        image1 = mainClass.predictImg('res/anton.jpg')
-        image1 = np.array(image1, dtype=np.uint8)
-        plt.imshow(image1)
-        plt.show()
+        # image1 = mainClass.predictImg('res/anton.jpg')
+        # image1 = np.array(image1, dtype=np.uint8)
+        # plt.imshow(image1)
+        # plt.show()
         
-        pixmapImage = QPixmap.fromImage(image)
+        pixmapImage = QPixmap(image)
         pixmapImage = pixmapImage.scaled(
             self.labelImage.width(), self.labelImage.height(),
             Qt.KeepAspectRatio,
