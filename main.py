@@ -781,12 +781,12 @@ class mainClass():
         class_names = [
             int2str(int(x)) for x in detections.nmsed_classes[0][:num_detections]
         ]
-        return image
-        # visualize_detections(
-        #     image,
-        #     detections.nmsed_boxes[0][:num_detections] / ratio,
-        #     class_names,
-        #     detections.nmsed_scores[0][:num_detections],
-        # )
+        # return image, class_names
+        visualize_detections(
+            image,
+            detections.nmsed_boxes[0][:num_detections] / ratio,
+            class_names,
+            detections.nmsed_scores[0][:num_detections],
+        )
 
-mainClass.predictImg('res/anton.jpg')
+mainClass.predictImg('res/ykt.jpg')
