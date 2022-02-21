@@ -19,7 +19,6 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
 
         # Кнопка сохранения кадра
-        # ToDo 1) - Добавить функцию сохранения кадра с лейбла
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(10, 10, 41, 41))
         self.pushButton.setMouseTracking(False)
@@ -90,7 +89,6 @@ class Ui_MainWindow(object):
         self.actionClose.setObjectName("actionClose")
 
         # File -> Save frame
-        # ToDo 1) - Добавить функцию сохранения кадра с лейбла
         self.actionSave_frame = QtWidgets.QAction(MainWindow)
         self.actionSave_frame.setObjectName("actionSave_frame")
 
@@ -133,6 +131,9 @@ class Ui_MainWindow(object):
         self.actionOpen.triggered.connect(self.openFile)
         # Очистка поля с изображением
         self.actionClose.triggered.connect(self.closeImage)
+        # Сохранение изображения
+        self.actionSave_frame.triggered.connect(self.saveFrame)
+        self.pushButton.clicked.connect(self.saveFrame)
 
     # Функция открывающая файл и отображающая её на экране
     def openImage(self, image):
@@ -160,7 +161,8 @@ class Ui_MainWindow(object):
     # Функция сохранения изображения
     def saveFrame(self):
         # ToDo Потом доделаю
-        pass
+        fileName = str(QFileDialog.getSaveFileName(filter="Image Files (*.png)", directory="image.png")[0])
+        ui.labelImage.pixmap().save(fileName)
 
 
 
