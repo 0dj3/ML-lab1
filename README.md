@@ -18,6 +18,7 @@ ___
 ___
 ## Полезные ссылки:
 - [Документация PyQt](https://doc.qt.io/)
+- [Использованная база данных](https://cocodataset.org/)
 
 
 ![flamed_monkey](https://i.giphy.com/media/3o85xDWOG8Sbl9yQzm/giphy.webp)
