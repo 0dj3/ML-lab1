@@ -1,5 +1,5 @@
 import os 
-import zipfile
+#import zipfile
 
 import numpy as np
 import tensorflow as tf
@@ -8,13 +8,13 @@ from tensorflow import keras
 import matplotlib.pyplot as plt
 import tensorflow_datasets as tfds
 
-url = "data.zip"
-filename = os.path.join(os.getcwd(), "data.zip")
-keras.utils.get_file(filename, url)
-
-
-with zipfile.ZipFile("data.zip", "r") as z_fp:
-    z_fp.extractall("./")
+# url = "data.zip"
+# filename = os.path.join(os.getcwd(), "data.zip")
+# keras.utils.get_file(filename, url)
+#
+#
+# with zipfile.ZipFile("data.zip", "r") as z_fp:
+#     z_fp.extractall("./")
 
 def swap_xy(boxes):
     """Swaps order the of x and y coordinates of the boxes.

@@ -1,12 +1,9 @@
 import sys
-import cv2
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.Qt import *
 from PyQt5.QtWidgets import QLabel, QFileDialog
 from PyQt5.QtGui import QImage, QPixmap, QPainter, QPen, QGuiApplication
-from PIL import Image
 from main import *
-from PIL.ImageQt import ImageQt
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -106,6 +103,8 @@ class Ui_MainWindow(object):
         self.actionClose.triggered.connect(self.closeImage)
         # Сохранение изображения
         self.actionSave_frame.triggered.connect(self.saveFrame)
+        # Открыть окно о программе
+        self.actionAbout.triggered.connect(self.openDialog)
 
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -161,17 +160,52 @@ class Ui_MainWindow(object):
 
     # Функция сохранения изображения
     def saveFrame(self):
-        # ToDo Потом доделаю
         fileName = str(QFileDialog.getSaveFileName(filter="Image Files (*.png)", directory="image.png")[0])
         ui.labelImage.pixmap().save(fileName)
 
+    def openDialog(self):
+        self.helpwin = HelpWindow()
+        self.helpwin.show()
 
+class HelpWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(450, 300)
+        #self.setGeometry(100, 60, 1000, 800)
+        self.setWindowTitle("About")
+
+        l1 = QLabel(self)
+        l2 = QLabel(self)
+        l3 = QLabel(self)
+        l4 = QLabel(self)
+        l5 = QLabel(self)
+
+        l1.move(140, 50)
+        l1.setText("Recognizes objects using RetinaNet")
+        l1.setAlignment(Qt.AlignCenter)
+        l1.adjustSize()
+
+        l2.setText("Developers:")
+        l2.setAlignment(Qt.AlignCenter)
+        l2.move(175, 75)
+
+        l3.setText("Egorov Aital")
+        l3.setAlignment(Qt.AlignCenter)
+        l3.move(175, 100)
+
+        l4.setText("Innokentiev Vladimir")
+        l4.setAlignment(Qt.AlignCenter)
+        l4.move(175, 125)
+
+        l5.setText("Lukovtsev Alexey")
+        l5.setAlignment(Qt.AlignCenter)
+        l5.move(175, 150)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
-
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
