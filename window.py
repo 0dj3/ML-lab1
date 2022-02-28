@@ -170,36 +170,26 @@ class Ui_MainWindow(object):
 class HelpWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(450, 300)
-        #self.setGeometry(100, 60, 1000, 800)
+        self.setFixedSize(250, 150)
         self.setWindowTitle("About")
 
         l1 = QLabel(self)
         l2 = QLabel(self)
-        l3 = QLabel(self)
-        l4 = QLabel(self)
-        l5 = QLabel(self)
 
-        l1.move(140, 50)
-        l1.setText("Recognizes objects using RetinaNet")
+        l1.move(45, 25)
+        l1.setText("Recognizes objects using RetinaNet \n "
+                   "Developers: \n "
+                   "Egorov 'aitalyy' Aital \n"
+                   "Innokentiev '0dj3' Vladimir \n"
+                   "Lukovtsev 'Witawe' Alexey \n")
         l1.setAlignment(Qt.AlignCenter)
         l1.adjustSize()
 
-        l2.setText("Developers:")
-        l2.setAlignment(Qt.AlignCenter)
-        l2.move(175, 75)
+        l2.setText('<a href="https://github.com/0dj3/ML-lab1">Github</a>')
+        l2.move(115, 90)
+        l2.setOpenExternalLinks(True)
 
-        l3.setText("Egorov Aital")
-        l3.setAlignment(Qt.AlignCenter)
-        l3.move(175, 100)
 
-        l4.setText("Innokentiev Vladimir")
-        l4.setAlignment(Qt.AlignCenter)
-        l4.move(175, 125)
-
-        l5.setText("Lukovtsev Alexey")
-        l5.setAlignment(Qt.AlignCenter)
-        l5.move(175, 150)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
